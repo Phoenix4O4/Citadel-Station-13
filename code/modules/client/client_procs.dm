@@ -233,6 +233,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	///////////
 
 /client/New(TopicData)
+	SSdemo.write_event_line("login [ckey]")
 	last_activity = world.time
 	world.SetConfig("APP/admin", ckey, "role=admin")
 	var/tdata = TopicData //save this for later use
@@ -548,6 +549,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	QDEL_LIST_ASSOC_VAL(char_render_holders)
 	// seen_messages = null
 	Master.UpdateTickRate()
+	SSdemo.write_event_line("logout [ckey]")
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW
 

@@ -51,7 +51,7 @@
 		if(href_list[VV_HK_VIEW_REFERENCES])
 			var/datum/D = locate(href_list[VV_HK_TARGET])
 			if(!D)
-				to_chat(usr, "<span class='warning'>Unable to locate item.</span>")
+				to_chat(usr, "<span class='warning'>Unable to locate item.</span>", confidential = TRUE)
 				return
 			usr.client.holder.view_refs(target)
 			return

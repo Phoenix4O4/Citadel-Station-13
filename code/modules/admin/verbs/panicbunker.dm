@@ -2,7 +2,7 @@
 	set category = "Server"
 	set name = "Toggle Panic Bunker"
 	if (!CONFIG_GET(flag/sql_enabled))
-		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
+		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>", confidential = TRUE)
 		return
 
 	var/new_pb = !CONFIG_GET(flag/panic_bunker)
@@ -20,7 +20,7 @@
 	set name = "Add PB Bypass"
 	set desc = "Allows a given ckey to connect despite the panic bunker for a given round."
 	if(!CONFIG_GET(flag/sql_enabled))
-		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
+		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>", confidential = TRUE)
 		return
 
 	GLOB.bunker_passthrough |= ckey(ckeytobypass)
@@ -35,7 +35,7 @@
 	set name = "Revoke PB Bypass"
 	set desc = "Revoke's a ckey's permission to bypass the panic bunker for a given round."
 	if(!CONFIG_GET(flag/sql_enabled))
-		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
+		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>", confidential = TRUE)
 		return
 
 	GLOB.bunker_passthrough -= ckey(ckeytobypass)

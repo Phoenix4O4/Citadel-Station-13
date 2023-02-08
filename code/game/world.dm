@@ -135,6 +135,7 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_crafting_log = "[GLOB.log_directory]/crafting.log"
 	GLOB.click_log = "[GLOB.log_directory]/click.log"
 	GLOB.world_asset_log = "[GLOB.log_directory]/asset.log"
+	GLOB.demo_log = "[GLOB.log_directory]/demo.log"
 
 
 #ifdef UNIT_TESTS
@@ -323,7 +324,7 @@ GLOBAL_LIST(topic_status_cache)
 		. += "[SSmapping.config.map_name], "
 	if(NUM2SECLEVEL(GLOB.security_level))
 		. += "[NUM2SECLEVEL(GLOB.security_level)] alert, "
-	
+
 	. += "[get_active_player_count(afk_check = TRUE)] playing"
 
 	status = .

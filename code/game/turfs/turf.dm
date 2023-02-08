@@ -645,3 +645,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		if(turf_to_check.density || LinkBlockedWithAccess(turf_to_check, caller, ID))
 			continue
 		. += turf_to_check
+
+/turf/setDir()
+	. = ..()
+	SSdemo.mark_turf(src)

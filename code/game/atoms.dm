@@ -109,6 +109,9 @@
 	///Used for changing icon states for different base sprites.
 	var/base_icon_state
 
+	/// Last appearance of the atom for demo saving purposes
+	var/image/demo_last_appearance
+
 	///Mobs that are currently do_after'ing this atom, to be cleared from on Destroy()
 	var/list/targeted_by
 
@@ -139,6 +142,7 @@
 		if(SSatoms.InitAtom(src, args))
 			//we were deleted
 			return
+	SSdemo.mark_new(src)
 
 /**
  * The primary method that objects are setup in SS13 with
@@ -617,6 +621,7 @@
 			add_overlay(new_overlays)
 		. |= UPDATE_OVERLAYS
 
+	SSdemo.mark_dirty(src)
 	. |= SEND_SIGNAL(src, COMSIG_ATOM_UPDATED_ICON, updates, .)
 
 /// Updates the icon state of the atom
@@ -937,6 +942,7 @@
 /atom/proc/setDir(newdir, ismousemovement=FALSE)
 	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
 	dir = newdir
+	SSdemo.mark_dirty(src)
 
 //If a mob logouts/logins in side of an object you can use this proc
 /atom/proc/on_log(login)
